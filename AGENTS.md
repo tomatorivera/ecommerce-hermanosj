@@ -10,6 +10,14 @@ Ecommerce de la Mueblería Hermanos Jota. Monorepo con stack MERN (MongoDB, Expr
 
 > MongoDB todavía no está integrado en `api/`. Al agregarlo, documentar acá la conexión y las variables de entorno.
 
+## Documentación (`docs/`)
+
+Leer el archivo que corresponda antes de trabajar en el tema; no hace falta leerlos todos.
+
+- `docs/consigna.md`: enunciado del trabajo (objetivos, requisitos técnicos de backend y frontend, entregables). Consultarlo para saber qué hay que construir o si algo cumple lo pedido.
+- `docs/estructura-carpetas.md`: estructura del monorepo y convenciones de dónde va cada archivo y cómo se nombra. Consultarlo antes de crear archivos, componentes o rutas nuevas.
+- `docs/manual-marca.md`: manual de marca (voz, paleta, tipografía, logo). Consultarlo al escribir textos de la interfaz o tocar estilos y diseño visual.
+
 ## Comandos
 
 Instalar dependencias en la raíz, en `api/` y en `client/` (`npm install` en cada una). El install de la raíz activa los hooks de Husky.
