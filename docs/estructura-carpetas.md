@@ -22,6 +22,7 @@ ecommerce-hermanosj/
 │   └── src/
 │       ├── routes/                 # Rutas (health.routes.js, ...)
 │       ├── controllers/            # Lógica de cada endpoint
+│       ├── middlewares/            # Middlewares propios (logger.middleware.js, ...)
 │       └── data/                   # Archivos con datos (productos, ...)
 ├── docs/
 │   ├── consigna.md
@@ -57,3 +58,4 @@ ecommerce-hermanosj/
   2. El **controller** contiene la lógica y arma la respuesta.
   3. **data** contiene los datos (archivos `.js` con arrays de objetos).
 - Las rutas no leen datos directamente ni los controllers definen endpoints.
+- Los middlewares propios van en `api/src/middlewares/` y se registran en `server.js` antes de las rutas.

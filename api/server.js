@@ -2,11 +2,13 @@ require("dotenv").config();
 
 const express = require("express");
 const cors = require("cors");
+const logger = require("./src/middlewares/logger.middleware");
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
 // Middlewares generales
+app.use(logger);
 app.use(express.json());
 app.use(cors());
 
