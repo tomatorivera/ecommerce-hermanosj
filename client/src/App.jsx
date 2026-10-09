@@ -31,14 +31,16 @@ function App() {
       <h1>Mueblería Hermanos Jota</h1>
 
       <main>
-        <h2>Productos</h2>
+        <section>
+          <h2>Productos</h2>
 
-        {cargando && !error && <p>Cargando productos...</p>}
-        {!cargando && error && <p>Ocurrió un error cargando los productos, detalle: {error}</p>}
+          {cargando && !error && <p>Cargando productos...</p>}
+          {!cargando && error && <p>Ocurrió un error cargando los productos, detalle: {error}</p>}
 
-        {!cargando && !error && (
-          <ProductList productos={productos} onSeleccionarProducto={setProductoSeleccionado} />
-        )}
+          {!cargando && !error && (
+            <ProductList productos={productos} onSeleccionarProducto={setProductoSeleccionado} />
+          )}
+        </section>
       </main>
     </section>
   );
