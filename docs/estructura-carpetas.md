@@ -7,9 +7,12 @@ ecommerce-hermanosj/
 ├── client/                         # Frontend: React 19 + Vite (ESM, JSX)
 │   ├── index.html                  # Punto de entrada de Vite
 │   ├── vite.config.js
+│   ├── public/
+│   │   └── images/                 # Imágenes de productos (se sirven en /images/...)
 │   └── src/
 │       ├── main.jsx
 │       ├── App.jsx                 # Estado global (p. ej. carrito) y vistas
+│       ├── assets/                 # Imágenes de la interfaz (logo, banner), se importan
 │       ├── components/             # Componentes (Navbar, ProductCard, ...)
 │       └── css/                    # Estilos, un archivo por componente
 ├── api/                            # Backend: Express 5
@@ -44,6 +47,7 @@ ecommerce-hermanosj/
 
 - Los componentes nuevos van en `client/src/components/`.
 - El CSS de cada componente va en `client/src/css/`, en un archivo propio (ej.: `ProductCard.css`).
+- Las imágenes de productos van en `client/public/images/`. La API guarda su ruta como `/images/nombre.png` y se usa tal cual en `<img src>`. Las imágenes de la interfaz (logo, banner) van en `client/src/assets/` y se importan desde el componente.
 - El estado compartido (como el carrito) vive en `App.jsx` y se pasa a los componentes por props.
 
 ### Backend (`api/`)

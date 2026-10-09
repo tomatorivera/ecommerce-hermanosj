@@ -1,9 +1,11 @@
 const express = require("express");
 const router = express.Router();
 
-// GET /api/ping
+const productos = require("../../data/productos.js");
+
+// GET /api/productos
 router.get("/", (req, res) => {
-  res.send("pong");
+  res.json(productos);
 });
 
 module.exports = router;

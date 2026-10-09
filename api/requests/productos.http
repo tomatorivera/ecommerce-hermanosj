@@ -3,4 +3,4 @@
 
 ###
 
-GET http://{{base_url}}/ping
+GET http://{{base_url}}/productos
