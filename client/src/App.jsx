@@ -41,11 +41,6 @@ function App() {
         <main>
           <h1>Mueblería Hermanos Jota</h1>
 
-          {/* Temporal: este botón se mueve a ProductDetail (issue #2) */}
-          <button type="button" onClick={() => agregarAlCarrito({ id: "producto-de-prueba" })}>
-            Agregar al carrito
-          </button>
-
           <section>
             <h2>Productos</h2>
 
@@ -56,7 +51,11 @@ function App() {
             {!cargando && error && <p>Ocurrió un error cargando los productos, detalle: {error}</p>}
 
             {!cargando && !error && (
-              <ProductList productos={productos} onSeleccionarProducto={setProductoSeleccionado} />
+              <ProductList
+                productos={productos}
+                onSeleccionarProducto={setProductoSeleccionado}
+                onAgregarCarrito={agregarAlCarrito}
+              />
             )}
           </section>
         </main>
