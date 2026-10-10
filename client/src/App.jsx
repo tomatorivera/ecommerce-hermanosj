@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
-
+import ContactForm from "./components/ContactForm.jsx";
 import "./css/App.css";
 
 function App() {
@@ -26,7 +26,10 @@ function App() {
           </button>
         </main>
       </div>
-
+      <section id="contacto">
+        <h2>Contacto</h2>
+        <ContactForm carrito={carrito} />
+      </section>
       <Footer />
     </div>
   );
