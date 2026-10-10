@@ -1,0 +1,24 @@
+### 201 - datos completos
+POST http://localhost:3000/api/contacto
+Content-Type: application/json
+
+{
+  "nombre": "Ana",
+  "email": "ana@mail.com",
+  "mensaje": "Hola, quiero más información"
+}
+
+### 400 - falta el email
+POST http://localhost:3000/api/contacto
+Content-Type: application/json
+
+{
+  "nombre": "Ana",
+  "mensaje": "Hola, quiero más información"
+}
+
+### 400 - body vacío
+POST http://localhost:3000/api/contacto
+Content-Type: application/json
+
+{}

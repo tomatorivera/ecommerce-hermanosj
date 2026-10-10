@@ -14,8 +14,10 @@ app.use(cors());
 
 // Rutas
 const healthRoutes = require("./src/routes/health.routes");
+const contactoRoutes = require("./src/routes/contact.routes");
 
 app.use("/api", healthRoutes);
+app.use("/api/contacto", contactoRoutes);
 
 // App
 app.listen(PORT, () => {
