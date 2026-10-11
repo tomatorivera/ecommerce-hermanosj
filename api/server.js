@@ -22,6 +22,24 @@ app.use("/api/contacto", contactoRoutes);
 app.use("/api/ping", healthRoutes);
 app.use("/api/productos", productosRoutes);
 
+// Middlewares pa rutas inexistentes
+app.use((req, res) => {
+  res.status(404).json({
+    error: "Ruta no encontrada",
+    path: req.originalUrl,
+  });
+});
+
+// Middleware centralizado
+// eslint-disable-next-line no-unused-vars
+app.use((error, req, res, next) => {
+  console.error(error);
+
+  res.status(500).json({
+    error: "Error interno del servidor",
+  });
+});
+
 // App
 app.listen(PORT, () => {
   console.log(`\n🚀 App corriendo en http://localhost:${PORT}\n`);
