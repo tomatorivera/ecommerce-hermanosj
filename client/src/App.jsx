@@ -1,12 +1,13 @@
 import { useState } from "react";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
-import ContactForm from "./components/ContactForm.jsx";
+import ContactPage from "./components/ContactPage.jsx";
+import "./css/global.css";
 import "./css/App.css";
 
 function App() {
-  // Carrito de compras: lista de productos agregados
   const [carrito, setCarrito] = useState([]);
+  const [paginaActual, setPaginaActual] = useState("inicio");
 
   const agregarAlCarrito = (producto) => {
     setCarrito((carritoActual) => [...carritoActual, producto]);
@@ -14,22 +15,27 @@ function App() {
 
   return (
     <div className="app">
-      <Navbar cantidadCarrito={carrito.length} />
+      <Navbar
+        cantidadCarrito={carrito.length}
+        paginaActual={paginaActual}
+        onNavegar={setPaginaActual}
+      />
 
       <div className="app-contenido">
-        <main>
-          <h1>Hola mundo</h1>
+        {paginaActual === "inicio" && (
+          <main>
+            <h1>Hola mundo</h1>
 
-          {/* Temporal: este botón se mueve a ProductDetail (issue #2) */}
-          <button type="button" onClick={() => agregarAlCarrito({ id: "producto-de-prueba" })}>
-            Agregar al carrito
-          </button>
-        </main>
+            {/* Temporal: este botón se mueve a ProductDetail (issue #2) */}
+            <button type="button" onClick={() => agregarAlCarrito({ id: "producto-de-prueba" })}>
+              Agregar al carrito
+            </button>
+          </main>
+        )}
+
+        {paginaActual === "contacto" && <ContactPage />}
       </div>
-      <section id="contacto">
-        <h2>Contacto</h2>
-        <ContactForm carrito={carrito} />
-      </section>
+
       <Footer />
     </div>
   );

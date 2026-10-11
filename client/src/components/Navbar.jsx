@@ -1,21 +1,38 @@
 import logo from "../assets/logo.svg";
 import "../css/Navbar.css";
 
-const Navbar = ({ cantidadCarrito }) => {
+const Navbar = ({ cantidadCarrito, paginaActual, onNavegar }) => {
+  const navegar = (e, pagina) => {
+    e.preventDefault();
+    onNavegar(pagina);
+  };
+
   return (
     <header className="navbar">
       <nav className="navbar-contenido" aria-label="Navegación principal">
-        <a className="navbar-marca" href="#">
+        <a className="navbar-marca" href="#" onClick={(e) => navegar(e, "inicio")}>
           <img className="navbar-logo" src={logo} alt="" />
           <span>Hermanos Jota</span>
         </a>
 
         <ul className="navbar-links">
           <li>
-            <a href="#productos">Productos</a>
+            <a
+              href="#"
+              onClick={(e) => navegar(e, "inicio")}
+              aria-current={paginaActual === "inicio" ? "page" : undefined}
+            >
+              Productos
+            </a>
           </li>
           <li>
-            <a href="#contacto">Contacto</a>
+            <a
+              href="#"
+              onClick={(e) => navegar(e, "contacto")}
+              aria-current={paginaActual === "contacto" ? "page" : undefined}
+            >
+              Contacto
+            </a>
           </li>
         </ul>
 

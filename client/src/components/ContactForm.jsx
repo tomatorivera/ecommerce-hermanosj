@@ -1,12 +1,15 @@
 import { useState } from "react";
-import "../css/ContactForm.css";
 import { BACKEND_BASE_URL } from "../constants.js";
+
 const INITIAL_FORM = { nombre: "", email: "", mensaje: "" };
 
 export default function ContactForm() {
   const [form, setForm] = useState(INITIAL_FORM);
   const [status, setStatus] = useState(null);
   const [loading, setLoading] = useState(false);
+
+  const isFormComplete =
+    form.nombre.trim() !== "" && form.email.trim() !== "" && form.mensaje.trim() !== "";
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -40,31 +43,63 @@ export default function ContactForm() {
   };
 
   return (
-    <form className="contact-form" onSubmit={handleSubmit}>
-      <label>
-        Nombre
-        <input name="nombre" value={form.nombre} onChange={handleChange} />
-      </label>
+    <section className="contact-form-card" aria-labelledby="form-title">
+      <h2 id="form-title">Escribinos</h2>
 
-      <label>
-        Email
-        <input type="email" name="email" value={form.email} onChange={handleChange} />
-      </label>
+      <form onSubmit={handleSubmit}>
+        <label htmlFor="nombre">Nombre:</label>
+        <input
+          type="text"
+          id="nombre"
+          name="nombre"
+          placeholder="Tu nombre"
+          value={form.nombre}
+          onChange={handleChange}
+          required
+        />
 
-      <label>
-        Mensaje
-        <textarea name="mensaje" value={form.mensaje} onChange={handleChange} />
-      </label>
+        <label htmlFor="email">Correo electrónico:</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          placeholder="tu@email.com"
+          value={form.email}
+          onChange={handleChange}
+          required
+        />
 
-      <button type="submit" disabled={loading}>
-        {loading ? "Enviando..." : "Enviar"}
-      </button>
+        <label htmlFor="mensaje">Mensaje:</label>
+        <textarea
+          id="mensaje"
+          name="mensaje"
+          placeholder="Contanos en qué podemos ayudarte..."
+          value={form.mensaje}
+          onChange={handleChange}
+          required
+        />
 
-      {status && (
-        <p className={`contact-status contact-status--${status.type}`} role="status">
-          {status.text}
-        </p>
-      )}
-    </form>
+        <button type="submit" disabled={loading || !isFormComplete}>
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <path d="M22 2 11 13" />
+            <path d="M22 2 15 22l-4-9-9-4 20-7z" />
+          </svg>
+          {loading ? "Enviando..." : "Enviar mensaje"}
+        </button>
+
+        {status && (
+          <p className={`contact-status contact-status--${status.type}`} role="status">
+            {status.text}
+          </p>
+        )}
+      </form>
+    </section>
   );
 }
