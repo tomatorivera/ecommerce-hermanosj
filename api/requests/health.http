@@ -1,0 +1,4 @@
+@port = {{$dotenv PORT}}
+@base_url = localhost:{{port}}/api
+
+GET http://{{base_url}}/ping

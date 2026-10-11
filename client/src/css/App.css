@@ -1,0 +1,10 @@
+/* Navbar arriba, Footer abajo aunque haya poco contenido */
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-contenido {
+  flex: 1;
+}
