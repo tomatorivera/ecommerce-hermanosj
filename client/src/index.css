@@ -3,6 +3,16 @@
   --heading: system-ui, "Segoe UI", Roboto, sans-serif;
   --mono: ui-monospace, Consolas, monospace;
 
+  --siena-tostado: #a0522d;
+  --verde-salvia: #87a96b;
+  --alabastro: #f5e6d3;
+  --vara-de-oro: #d4a437;
+  --rosa-polvoriento: #c47a6d;
+
+  --text-principal: #3a2a1e;
+  --text-secundario: #7a6a5a;
+  --borde: #e4d2bc;
+
   font: 18px/145% var(--sans);
   letter-spacing: 0.18px;
   font-synthesis: none;
@@ -13,6 +23,12 @@
   @media (max-width: 1024px) {
     font-size: 16px;
   }
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
 }
 
 body {

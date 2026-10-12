@@ -24,3 +24,11 @@ Para empezar a trabajar:
 2. Levantar `npm run dev` en `api/` y en `client/` (dos terminales).
 3. Comenzar a trabajar.
 4. Commits con [Conventional Commits](https://www.conventionalcommits.org/) (`feat:`, `fix:`, `docs:`…). Los hooks de Husky validan el mensaje y corren lint y build.
+
+## Documentación (`docs/`)
+
+Leer el archivo que corresponda antes de trabajar en el tema; no hace falta leerlos todos.
+
+- `docs/consigna.md`: enunciado del trabajo (objetivos, requisitos técnicos de backend y frontend, entregables). Consultarlo para saber qué hay que construir o si algo cumple lo pedido.
+- `docs/estructura-carpetas.md`: estructura del monorepo y convenciones de dónde va cada archivo y cómo se nombra. Consultarlo antes de crear archivos, componentes o rutas nuevas.
+- `docs/manual-marca.md`: manual de marca (voz, paleta, tipografía, logo). Consultarlo al escribir textos de la interfaz o tocar estilos y diseño visual.
