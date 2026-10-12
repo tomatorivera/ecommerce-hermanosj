@@ -14,11 +14,23 @@ function App() {
   const [cargando, setCargando] = useState(true);
   const [error, setError] = useState(null);
 
-  // Carrito de compras: lista de productos agregados
+  // Carrito de compras: lista de productos agregados, cada uno con su cantidad
   const [carrito, setCarrito] = useState([]);
 
+  // Total de unidades, no de líneas del carrito
+  const cantidadTotal = carrito.reduce((total, item) => total + item.cantidad, 0);
+
   const agregarAlCarrito = (producto) => {
-    setCarrito((carritoActual) => [...carritoActual, producto]);
+    setCarrito((carritoActual) => {
+      const yaEstaEnCarrito = carritoActual.some((item) => item.id === producto.id);
+
+      if (yaEstaEnCarrito)
+        return carritoActual.map((item) =>
+          item.id === producto.id ? { ...item, cantidad: item.cantidad + 1 } : item,
+        );
+
+      return [...carritoActual, { ...producto, cantidad: 1 }];
+    });
   };
 
   useEffect(() => {
@@ -35,8 +47,8 @@ function App() {
 
   return (
     <section className="app">
-      <Navbar cantidadCarrito={carrito.length} />
-
+      <Navbar cantidadCarrito={cantidadTotal} />
+  
       <div className="app-contenido">
         <main>
           <h1>Mueblería Hermanos Jota</h1>
