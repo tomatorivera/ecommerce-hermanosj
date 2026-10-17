@@ -35,7 +35,7 @@ La API usa `api/.env` (ver `api/.env.example`). Nunca commitear `.env`.
 ## Convenciones
 
 - Código en JavaScript. `client/` usa ESM; `api/` usa CommonJS (`require`).
-- Prettier: sin punto y coma, comillas simples, `trailingComma: all`. No discutir estilo: correr `npm run format`.
+- Prettier: con punto y coma, comillas dobles, `trailingComma: all`, ancho de línea 100. No discutir estilo: correr `npm run format`.
 - ESLint con una única config en la raíz (`eslint.config.js`), con bloques separados para `client/` y `api/`.
 - Nombres de archivos del backend con sufijo por rol, por ejemplo `health.routes.js`.
 - Texto de la interfaz y documentación en español.
