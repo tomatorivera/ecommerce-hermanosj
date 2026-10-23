@@ -15,7 +15,7 @@ app.use(cors());
 // Rutas
 const healthRoutes = require("./src/routes/health.routes");
 const contactoRoutes = require("./src/routes/contact.routes");
-const productosRoutes = require("./src/routes/producto.routes");
+const productosRoutes = require("./src/routes/productos.routes");
 
 app.use("/api", healthRoutes);
 app.use("/api/contacto", contactoRoutes);

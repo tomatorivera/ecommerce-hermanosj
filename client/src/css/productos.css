@@ -76,10 +76,52 @@
   gap: 20px;
 }
 
+/* Detalle de producto */
+
+.btn-volver {
+  margin-bottom: 20px;
+  padding: 8px 14px;
+  background-color: transparent;
+  border: 1px solid var(--siena-tostado);
+  border-radius: 4px;
+  color: var(--siena-tostado);
+  font-weight: 500;
+  font-size: 1em;
+  cursor: pointer;
+}
+
+.btn-volver:hover {
+  background-color: var(--alabastro);
+}
+
+.ProductDetail {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  text-align: left;
+  padding: 20px;
+  background-color: #ffffff;
+  border: 1px solid var(--vara-de-oro);
+  border-radius: 4px;
+}
+
+.ProductDetail img {
+  width: 100%;
+  object-fit: cover;
+  background-color: var(--alabastro);
+}
+
 /* Responsive */
 
 @media all and (min-width: 720px) {
   .catalog {
     gap: 30px;
+  }
+  .ProductDetail {
+    flex-direction: row;
+  }
+
+  .ProductDetail img {
+    width: 40%;
   }
 }
