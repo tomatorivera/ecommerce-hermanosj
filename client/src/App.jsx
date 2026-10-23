@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import ContactPage from "./components/ContactPage.jsx";
 import ProductList from "./components/ProductList";
-
+import "./css/global.css";
 import "./css/App.css";
 
 const BACKEND_BASE_URL = "http://localhost:3000/api";
@@ -16,6 +17,7 @@ function App() {
 
   // Carrito de compras: lista de productos agregados, cada uno con su cantidad
   const [carrito, setCarrito] = useState([]);
+  const [paginaActual, setPaginaActual] = useState("inicio");
 
   // Total de unidades, no de líneas del carrito
   const cantidadTotal = carrito.reduce((total, item) => total + item.cantidad, 0);
@@ -72,7 +74,7 @@ function App() {
           </section>
         </main>
       </div>
-
+      {paginaActual === "contacto" && <ContactPage />}
       <Footer />
     </section>
   );
