@@ -118,7 +118,12 @@ function App() {
           <main>
             {cargandoDetalle && <p>Cargando producto...</p>}
             {!cargandoDetalle && errorDetalle && (
-              <p>Ocurrió un error cargando el producto, detalle: {errorDetalle}</p>
+              <>
+                <button className="btn-volver" type="button" onClick={() => navegar("inicio")}>
+                  ← Volver al listado
+                </button>
+                <p>Ocurrió un error cargando el producto, detalle: {errorDetalle}</p>
+              </>
             )}
 
             {!cargandoDetalle && detalle && (
