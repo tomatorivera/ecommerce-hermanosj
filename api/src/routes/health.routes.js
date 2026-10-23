@@ -1,7 +1,8 @@
 const express = require("express");
 const router = express.Router();
 
-router.get("/ping", (req, res) => {
+// GET /api/ping
+router.get("/", (req, res) => {
   res.send("pong");
 });
 
