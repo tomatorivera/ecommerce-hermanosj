@@ -15,6 +15,11 @@ function App() {
   const [cargando, setCargando] = useState(true);
   const [error, setError] = useState(null);
 
+  // Detalle del producto seleccionado, se pide a la API por id
+  const [detalle, setDetalle] = useState(null);
+  const [cargandoDetalle, setCargandoDetalle] = useState(false);
+  const [errorDetalle, setErrorDetalle] = useState(null);
+
   // Carrito de compras: lista de productos agregados, cada uno con su cantidad
   const [carrito, setCarrito] = useState([]);
   const [paginaActual, setPaginaActual] = useState("inicio");
@@ -22,14 +27,15 @@ function App() {
   // Total de unidades, no de líneas del carrito
   const cantidadTotal = carrito.reduce((total, item) => total + item.cantidad, 0);
 
-  const producto = productos.find((p) => p.id === productoSeleccionado);
-
   const navegar = (pagina) => {
     setProductoSeleccionado(null);
     setPaginaActual(pagina);
   };
 
   const verDetalle = (id) => {
+    setDetalle(null);
+    setErrorDetalle(null);
+    setCargandoDetalle(true);
     setProductoSeleccionado(id);
     setPaginaActual("producto");
   };
@@ -58,6 +64,21 @@ function App() {
       .catch((err) => setError(err.message))
       .finally(() => setCargando(false));
   }, []);
+
+  useEffect(() => {
+    if (!productoSeleccionado) return;
+
+    fetch(`${BACKEND_BASE_URL}/productos/${encodeURIComponent(productoSeleccionado)}`)
+      .then((response) => {
+        if (response.status === 404) throw new Error("El producto no existe");
+        if (!response.ok) throw new Error("Ocurrió un error cargando el producto");
+
+        return response.json();
+      })
+      .then((data) => setDetalle(data))
+      .catch((err) => setErrorDetalle(err.message))
+      .finally(() => setCargandoDetalle(false));
+  }, [productoSeleccionado]);
 
   return (
     <section className="app">
@@ -88,10 +109,17 @@ function App() {
         </div>
       )}
 
-      {paginaActual === "producto" && producto && (
+      {paginaActual === "producto" && (
         <div className="app-contenido">
           <main>
-            <ProductDetail producto={producto} onAgregarCarrito={agregarAlCarrito} />
+            {cargandoDetalle && <p>Cargando producto...</p>}
+            {!cargandoDetalle && errorDetalle && (
+              <p>Ocurrió un error cargando el producto, detalle: {errorDetalle}</p>
+            )}
+
+            {!cargandoDetalle && detalle && (
+              <ProductDetail producto={detalle} onAgregarCarrito={agregarAlCarrito} />
+            )}
           </main>
         </div>
       )}

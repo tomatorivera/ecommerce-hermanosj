@@ -19,11 +19,10 @@ ecommerce-hermanosj/
 │   ├── server.js                   # Entrada: middlewares y montaje de rutas
 │   ├── .env.example                # Variables de entorno (nunca commitear .env)
 │   ├── requests/                   # Requests de ejemplo para probar la API
+│   ├── data/                       # Archivos con datos (productos, ...)
 │   └── src/
-│       ├── routes/                 # Rutas (health.routes.js, ...)
-│       ├── controllers/            # Lógica de cada endpoint
-│       ├── middlewares/            # Middlewares propios (logger.middleware.js, ...)
-│       └── data/                   # Archivos con datos (productos, ...)
+│       ├── routes/                 # Endpoints y su lógica (health.routes.js, ...)
+│       └── middlewares/            # Middlewares propios (logger.middleware.js, ...)
 ├── docs/
 │   ├── consigna.md
 │   └── estructura-carpetas.md
@@ -38,7 +37,7 @@ ecommerce-hermanosj/
 
 ### Generales
 
-- Los archivos de **lógica** se nombran como `nombre-archivo.tipo.js`, con minúsculas y guiones (ej.: `health.routes.js`, `productos.controller.js`).
+- Los archivos de **lógica** se nombran como `nombre-archivo.tipo.js`, con minúsculas y guiones (ej.: `health.routes.js`, `logger.middleware.js`).
 - Los componentes de React son la excepción: usan `PascalCase` y extensión `.jsx` (ej.: `ProductCard.jsx`).
 - Todo el código en JavaScript, sin TypeScript. `client/` usa ESM; `api/` usa CommonJS (`require`).
 - Texto de la interfaz y documentación en español.
@@ -53,9 +52,6 @@ ecommerce-hermanosj/
 ### Backend (`api/`)
 
 - Las rutas nuevas van en `api/src/routes/`, cada una en su propio archivo, y se montan en `server.js`.
-- Se sigue el flujo **route -> controller -> data**:
-  1. La **route** define el endpoint y delega.
-  2. El **controller** contiene la lógica y arma la respuesta.
-  3. **data** contiene los datos (archivos `.js` con arrays de objetos).
-- Las rutas no leen datos directamente ni los controllers definen endpoints.
+- Cada route define el endpoint y contiene su lógica: lee los datos y arma la respuesta. No se usan controllers porque los endpoints son chicos.
+- Los datos van en `api/data/`, como archivos `.js` con arrays de objetos, y las rutas los importan directamente.
 - Los middlewares propios van en `api/src/middlewares/` y se registran en `server.js` antes de las rutas.

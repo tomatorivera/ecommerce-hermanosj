@@ -9,14 +9,13 @@ router.get("/", (req, res) => {
 });
 
 // GET /api/productos/:id
-router.get("/:id", (req, res, next) => {
-  const producto = productos.find((u) => u.id === parseInt(req.params.id));
+router.get("/:id", (req, res) => {
+  const producto = productos.find((u) => u.id === req.params.id);
   if (!producto) {
-    const error = new Error("Producto no Encontrado");
-    error.status = 404;
-    return next(error);
+    return res.status(404).json({ error: "Producto no encontrado" });
   }
-  res.json({ message: `Obteniendo información del producto con ID: ${req.params.id}` });
+
+  res.json(producto);
 });
 
 module.exports = router;

@@ -1,6 +1,14 @@
 @port = {{$dotenv PORT}}
 @base_url = localhost:{{port}}/api
 
-###
+### Obtener productos
 
 GET http://{{base_url}}/productos
+
+### 200 - Obtener producto existente
+
+GET http://{{base_url}}/productos/aparador-uspallata
+
+### 404 - Producto inexistente
+
+GET http://{{base_url}}/productos/123123
