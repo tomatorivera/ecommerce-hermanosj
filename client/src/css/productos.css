@@ -78,6 +78,22 @@
 
 /* Detalle de producto */
 
+.btn-volver {
+  margin-bottom: 20px;
+  padding: 8px 14px;
+  background-color: transparent;
+  border: 1px solid var(--siena-tostado);
+  border-radius: 4px;
+  color: var(--siena-tostado);
+  font-weight: 500;
+  font-size: 1em;
+  cursor: pointer;
+}
+
+.btn-volver:hover {
+  background-color: var(--alabastro);
+}
+
 .ProductDetail {
   display: flex;
   flex-direction: column;

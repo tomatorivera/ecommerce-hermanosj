@@ -32,6 +32,10 @@ function App() {
     setPaginaActual(pagina);
   };
 
+  // fetch rechaza con TypeError cuando no hay conexión con la API (por ejemplo, si está apagada)
+  const mensajeDeError = (err) =>
+    err instanceof TypeError ? "No se pudo conectar con el servidor" : err.message;
+
   const verDetalle = (id) => {
     setDetalle(null);
     setErrorDetalle(null);
@@ -61,7 +65,7 @@ function App() {
         return response.json();
       })
       .then((data) => setProductos(data))
-      .catch((err) => setError(err.message))
+      .catch((err) => setError(mensajeDeError(err)))
       .finally(() => setCargando(false));
   }, []);
 
@@ -76,7 +80,7 @@ function App() {
         return response.json();
       })
       .then((data) => setDetalle(data))
-      .catch((err) => setErrorDetalle(err.message))
+      .catch((err) => setErrorDetalle(mensajeDeError(err)))
       .finally(() => setCargandoDetalle(false));
   }, [productoSeleccionado]);
 
@@ -118,7 +122,11 @@ function App() {
             )}
 
             {!cargandoDetalle && detalle && (
-              <ProductDetail producto={detalle} onAgregarCarrito={agregarAlCarrito} />
+              <ProductDetail
+                producto={detalle}
+                onAgregarCarrito={agregarAlCarrito}
+                onVolver={() => navegar("inicio")}
+              />
             )}
           </main>
         </div>
