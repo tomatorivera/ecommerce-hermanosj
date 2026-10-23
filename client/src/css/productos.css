@@ -76,16 +76,23 @@
   gap: 20px;
 }
 
+/* Detalle de producto */
+
 .ProductDetail {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  gap: 20px;
   text-align: left;
-  border-color: #d4a437;
-  border-radius: 5%;
+  padding: 20px;
+  background-color: #ffffff;
+  border: 1px solid var(--vara-de-oro);
+  border-radius: 4px;
 }
-img {
-  width: 30%;
+
+.ProductDetail img {
+  width: 100%;
+  object-fit: cover;
+  background-color: var(--alabastro);
 }
 
 /* Responsive */
@@ -95,7 +102,10 @@ img {
     gap: 30px;
   }
   .ProductDetail {
-    display: flex;
     flex-direction: row;
+  }
+
+  .ProductDetail img {
+    width: 40%;
   }
 }

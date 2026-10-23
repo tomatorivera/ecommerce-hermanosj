@@ -7,6 +7,8 @@ const productos = require("../../data/productos.js");
 router.get("/", (req, res) => {
   res.json(productos);
 });
+
+// GET /api/productos/:id
 router.get("/:id", (req, res, next) => {
   const producto = productos.find((u) => u.id === parseInt(req.params.id));
   if (!producto) {
