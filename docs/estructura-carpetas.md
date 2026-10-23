@@ -54,4 +54,5 @@ ecommerce-hermanosj/
 - Las rutas nuevas van en `api/src/routes/`, cada una en su propio archivo, y se montan en `server.js`.
 - Cada route define el endpoint y contiene su lógica: lee los datos y arma la respuesta. No se usan controllers porque los endpoints son chicos.
 - Los datos van en `api/data/`, como archivos `.js` con arrays de objetos, y las rutas los importan directamente.
-- Los middlewares propios van en `api/src/middlewares/` y se registran en `server.js` antes de las rutas.
+- Los middlewares propios van en `api/src/middlewares/` y se registran en `server.js` antes de las rutas. La excepción son los de manejo de errores (`not-found.middleware.js` y `error.middleware.js`), que se registran después de las rutas.
+- Las rutas que necesitan cortar con un error lo lanzan (o lo pasan con `next(error)`) y el manejador centralizado responde en JSON: si el error trae `status` menor a 500 se usa ese código y su mensaje; si no, 500 con un mensaje genérico.

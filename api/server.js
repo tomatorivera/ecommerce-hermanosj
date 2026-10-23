@@ -3,6 +3,8 @@ require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 const logger = require("./src/middlewares/logger.middleware");
+const notFound = require("./src/middlewares/not-found.middleware");
+const errorHandler = require("./src/middlewares/error.middleware");
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -17,28 +19,13 @@ const healthRoutes = require("./src/routes/health.routes");
 const contactoRoutes = require("./src/routes/contact.routes");
 const productosRoutes = require("./src/routes/productos.routes");
 
-app.use("/api", healthRoutes);
 app.use("/api/contacto", contactoRoutes);
 app.use("/api/ping", healthRoutes);
 app.use("/api/productos", productosRoutes);
 
-// Middlewares pa rutas inexistentes
-app.use((req, res) => {
-  res.status(404).json({
-    error: "Ruta no encontrada",
-    path: req.originalUrl,
-  });
-});
-
-// Middleware centralizado
-// eslint-disable-next-line no-unused-vars
-app.use((error, req, res, next) => {
-  console.error(error);
-
-  res.status(500).json({
-    error: "Error interno del servidor",
-  });
-});
+// Manejo de errores: van después de las rutas
+app.use(notFound);
+app.use(errorHandler);
 
 // App
 app.listen(PORT, () => {

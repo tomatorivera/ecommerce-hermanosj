@@ -1,0 +1,13 @@
+@port = {{$dotenv PORT}}
+@base_url = localhost:{{port}}/api
+
+### 404 - Ruta inexistente
+
+GET http://{{base_url}}/no-existe
+
+### 400 - JSON mal formado
+
+POST http://{{base_url}}/contacto
+Content-Type: application/json
+
+{ "nombre": "Ana",
