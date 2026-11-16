@@ -1,30 +1,27 @@
 import ContactForm from "../components/ContactForm.jsx";
-import "../css/contacto.css";
-function Icon({ children }) {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      {children}
-    </svg>
-  );
-}
+import ContactIcon from "../components/ContactIcon.jsx";
 
-const emailIcon = (
-  <>
-    <rect x="3" y="5" width="18" height="14" rx="2" />
-    <path d="m3 7 9 6 9-6" />
-  </>
-);
+import "../css/contacto.css";
 
 const CONTACTOS = [
-  { texto: "info@hermanosjota.com.ar", icon: emailIcon },
-  { texto: "ventas@hermanosjota.com.ar", icon: emailIcon },
+  {
+    texto: "info@hermanosjota.com.ar",
+    icon: (
+      <>
+        <rect x="3" y="5" width="18" height="14" rx="2" />
+        <path d="m3 7 9 6 9-6" />
+      </>
+    ),
+  },
+  {
+    texto: "ventas@hermanosjota.com.ar",
+    icon: (
+      <>
+        <rect x="3" y="5" width="18" height="14" rx="2" />
+        <path d="m3 7 9 6 9-6" />
+      </>
+    ),
+  },
   {
     texto: "+54 11 4567-8900 (WhatsApp)",
     icon: (
@@ -61,10 +58,10 @@ export default function ContactPage() {
 
           <address className="info-row">
             <span className="icon-circle">
-              <Icon>
+              <ContactIcon>
                 <path d="M12 21s7-7.58 7-12a7 7 0 1 0-14 0c0 4.42 7 12 7 12z" />
                 <circle cx="12" cy="9" r="2.5" />
-              </Icon>
+              </ContactIcon>
             </span>
             <div>
               <p className="info-title">Av. San Juan 2847</p>
@@ -75,10 +72,10 @@ export default function ContactPage() {
 
           <section className="info-row">
             <span className="icon-circle">
-              <Icon>
+              <ContactIcon>
                 <circle cx="12" cy="12" r="9" />
                 <path d="M12 7v5l3 3" />
-              </Icon>
+              </ContactIcon>
             </span>
             <div>
               <p className="info-title">Horarios</p>
@@ -92,7 +89,7 @@ export default function ContactPage() {
             <ul className="contact-list">
               {CONTACTOS.map(({ texto, icon }) => (
                 <li key={texto}>
-                  <Icon>{icon}</Icon>
+                  <ContactIcon>{icon}</ContactIcon>
                   {texto}
                 </li>
               ))}

@@ -10,7 +10,7 @@ const ProductCard = ({ producto, onSeleccionarProducto, onAgregarCarrito }) => {
       <section onClick={() => onSeleccionarProducto(producto.id)}>
         <img
           className="product-image"
-          src={`../${producto.imagen}`}
+          src={`../${producto.imagenUrl}`}
           alt={`Imagen del producto ${producto.nombre}`}
           loading="lazy"
         />

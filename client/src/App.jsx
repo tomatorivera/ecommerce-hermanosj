@@ -1,19 +1,19 @@
 import { useEffect, useState } from "react";
+import { BACKEND_BASE_URL } from "./constants.js";
+import { mensajeDeError } from "./utils/errores.utils.js";
+import { Route, Routes } from "react-router-dom";
+
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
-import ContactPage from "./components/ContactPage.jsx";
-import ProductList from "./components/ProductList";
+import ContactPage from "./pages/ContactPage.jsx";
 import ProductDetail from "./components/ProductDetail";
-import { BACKEND_BASE_URL } from "./constants.js";
+import HomePage from "./pages/HomePage.jsx";
+
 import "./css/global.css";
 import "./css/App.css";
 
 function App() {
-  // Carga de productos
-  const [productos, setProductos] = useState([]);
   const [productoSeleccionado, setProductoSeleccionado] = useState(null);
-  const [cargando, setCargando] = useState(true);
-  const [error, setError] = useState(null);
 
   // Detalle del producto seleccionado, se pide a la API por id
   const [detalle, setDetalle] = useState(null);
@@ -31,10 +31,6 @@ function App() {
     setProductoSeleccionado(null);
     setPaginaActual(pagina);
   };
-
-  // fetch rechaza con TypeError cuando no hay conexión con la API (por ejemplo, si está apagada)
-  const mensajeDeError = (err) =>
-    err instanceof TypeError ? "No se pudo conectar con el servidor" : err.message;
 
   const verDetalle = (id) => {
     setDetalle(null);
@@ -58,18 +54,6 @@ function App() {
   };
 
   useEffect(() => {
-    fetch(`${BACKEND_BASE_URL}/productos`)
-      .then((response) => {
-        if (!response.ok) throw new Error("Ocurrió un error cargando los productos");
-
-        return response.json();
-      })
-      .then((data) => setProductos(data))
-      .catch((err) => setError(mensajeDeError(err)))
-      .finally(() => setCargando(false));
-  }, []);
-
-  useEffect(() => {
     if (!productoSeleccionado) return;
 
     fetch(`${BACKEND_BASE_URL}/productos/${encodeURIComponent(productoSeleccionado)}`)
@@ -88,30 +72,15 @@ function App() {
     <section className="app">
       <Navbar cantidadCarrito={cantidadTotal} paginaActual={paginaActual} onNavegar={navegar} />
 
-      {paginaActual === "inicio" && (
-        <div className="app-contenido">
-          <main>
-            <h1>Mueblería Hermanos Jota</h1>
-
-            <section>
-              <h2>Productos</h2>
-
-              {cargando && !error && <p>Cargando productos...</p>}
-              {!cargando && error && (
-                <p>Ocurrió un error cargando los productos, detalle: {error}</p>
-              )}
-
-              {!cargando && !error && (
-                <ProductList
-                  productos={productos}
-                  onSeleccionarProducto={verDetalle}
-                  onAgregarCarrito={agregarAlCarrito}
-                />
-              )}
-            </section>
-          </main>
-        </div>
-      )}
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <HomePage onSeleccionarProducto={verDetalle} onAgregarCarrito={agregarAlCarrito} />
+          }
+        />
+        <Route path="/contacto" element={<ContactPage />} />
+      </Routes>
 
       {paginaActual === "producto" && (
         <div className="app-contenido">
