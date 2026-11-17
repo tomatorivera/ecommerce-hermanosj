@@ -118,6 +118,22 @@
   background-color: #8a4424;
 }
 
+/* Botón de edición en el detalle de producto */
+.btn-editar-producto {
+  display: inline-block;
+  margin-left: 10px;
+  padding: 9px 14px;
+  border: 1px solid var(--siena-tostado);
+  border-radius: 4px;
+  color: var(--siena-tostado);
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.btn-editar-producto:hover {
+  background-color: var(--alabastro);
+}
+
 .ProductDetail {
   display: flex;
   flex-direction: column;

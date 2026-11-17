@@ -5,6 +5,7 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import ContactPage from "./pages/ContactPage.jsx";
 import CreateProductPage from "./pages/CreateProductPage.jsx";
+import EditProductPage from "./pages/EditProductPage.jsx";
 import ProductDetailPage from "./pages/ProductDetailPage.jsx";
 import ProductsPage from "./pages/ProductsPage.jsx";
 
@@ -45,6 +46,7 @@ function App() {
         />
         <Route path="/contacto" element={<ContactPage />} />
         <Route path="/admin/crear-producto" element={<CreateProductPage />} />
+        <Route path="/admin/editar-producto/:id" element={<EditProductPage />} />
       </Routes>
 
       <Footer />
