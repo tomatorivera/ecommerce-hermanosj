@@ -64,14 +64,14 @@ const EditProductPage = () => {
               ← Volver al detalle
             </Link>
 
-            <section className="product-form-card" aria-labelledby="editar-producto-title">
+            <section className="card card--angosta" aria-labelledby="editar-producto-title">
               <h2 id="editar-producto-title">Editar producto</h2>
 
               <ProductForm product={producto} btnText="Guardar cambios" onSubmit={editarProducto} />
 
               {productoEditado && (
                 <>
-                  <p className="product-form-status product-form-status--success" role="status">
+                  <p className="alert alert--success product-form-status" role="status">
                     Producto "{productoEditado.nombre}" actualizado correctamente.
                   </p>
                   <Link to={`/productos/${productoEditado._id}`}>Ver producto</Link>

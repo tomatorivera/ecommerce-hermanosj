@@ -6,10 +6,21 @@
   --alabastro: #f5e6d3;
   --vara-de-oro: #d4a437;
   --rosa-polvoriento: #c47a6d;
+  --siena-oscuro: #8a4424;
+  --blanco: #ffffff;
 
   --text-principal: #3a2a1e;
   --text-secundario: #7a6a5a;
   --borde: #e4d2bc;
+
+  --error-fondo: #fbe9e7;
+  --error-borde: #c0503f;
+  --error-texto: #8a2a1c;
+  --exito-fondo: #e6f2e6;
+  --exito-borde: #5a9a5a;
+  --exito-texto: #2d5a2d;
+
+  --sombra-card: 0 4px 16px rgba(58, 42, 30, 0.08);
 
   --font-primaria: "Inter", sans-serif;
   --font-secundaria: "Playfair Display", Georgia, serif;
@@ -26,4 +37,153 @@ body {
   font-size: 12pt;
   line-height: 1.6;
   color: var(--text-principal);
+}
+
+/* ---------- Componentes compartidos ---------- */
+
+/* Tarjeta: contenedor blanco con borde y sombra (formularios, confirmaciones) */
+.card {
+  padding: 32px;
+  background-color: var(--blanco);
+  border: 1px solid var(--borde);
+  border-radius: 8px;
+  box-shadow: var(--sombra-card);
+}
+
+.card--angosta {
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+/* Título de sección / de tarjeta */
+.section-title,
+.card h2 {
+  margin: 0 0 24px;
+  font-family: var(--font-secundaria);
+  font-size: 1.75rem;
+  color: var(--siena-tostado);
+}
+
+/* Formulario: campos apilados con etiqueta en mayúsculas */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form label {
+  display: block;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-principal);
+}
+
+.form input,
+.form textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--borde);
+  border-radius: 4px;
+  background-color: var(--alabastro);
+  color: var(--text-principal);
+  font-family: inherit;
+  font-size: 1rem;
+}
+
+.form textarea {
+  min-height: 140px;
+  resize: vertical;
+}
+
+.form input:focus-visible,
+.form textarea:focus-visible {
+  outline: 2px solid var(--siena-tostado);
+  outline-offset: 1px;
+  border-color: var(--siena-tostado);
+}
+
+/* Botones */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 28px;
+  border: 0;
+  border-radius: 999px;
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.btn svg {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.btn-primary {
+  background-color: var(--siena-tostado);
+  color: var(--blanco);
+}
+
+.btn-primary:hover:not(:disabled) {
+  background-color: var(--siena-oscuro);
+}
+
+.btn-peligro {
+  background-color: var(--error-borde);
+  color: var(--blanco);
+}
+
+.btn-peligro:hover:not(:disabled) {
+  background-color: var(--error-texto);
+}
+
+.btn-outline {
+  background-color: transparent;
+  border: 1px solid var(--siena-tostado);
+  color: var(--siena-tostado);
+}
+
+.btn-outline:hover:not(:disabled) {
+  background-color: var(--alabastro);
+}
+
+/* Mensajes de estado / error */
+.alert {
+  margin: 12px 0 0;
+  padding: 10px 12px;
+  border-radius: 4px;
+  font-size: 0.9375rem;
+}
+
+.alert--success {
+  background-color: var(--exito-fondo);
+  border: 1px solid var(--exito-borde);
+  color: var(--exito-texto);
+}
+
+.alert--error {
+  background-color: var(--error-fondo);
+  border: 1px solid var(--error-borde);
+  color: var(--error-texto);
+}
+
+@media (max-width: 800px) {
+  .card {
+    padding: 24px 16px;
+  }
 }

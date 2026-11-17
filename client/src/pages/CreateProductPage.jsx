@@ -30,14 +30,14 @@ const CreateProductPage = () => {
           ← Volver al listado
         </Link>
 
-        <section className="product-form-card" aria-labelledby="crear-producto-title">
+        <section className="card card--angosta" aria-labelledby="crear-producto-title">
           <h2 id="crear-producto-title">Nuevo producto</h2>
 
           <ProductForm btnText="Crear producto" onSubmit={crearProducto} resetOnSubmit />
 
           {productoCreado && (
             <>
-              <p className="product-form-status product-form-status--success" role="status">
+              <p className="alert alert--success product-form-status" role="status">
                 Producto "{productoCreado.nombre}" creado correctamente.
               </p>
               <Link to={`/productos/${productoCreado._id}`}>Ver producto</Link>

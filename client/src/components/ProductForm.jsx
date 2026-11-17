@@ -76,7 +76,7 @@ export default function ProductForm({
   };
 
   return (
-    <form className="product-form" onSubmit={handleSubmit} noValidate>
+    <form className="form product-form" onSubmit={handleSubmit} noValidate>
       <label htmlFor="nombre">Nombre:</label>
       <input
         type="text"
@@ -136,12 +136,12 @@ export default function ProductForm({
         onChange={handleChange}
       />
 
-      <button type="submit" disabled={loading}>
+      <button type="submit" className="btn btn-primary" disabled={loading}>
         {loading ? "Procesando..." : btnText}
       </button>
 
       {errores.length > 0 && (
-        <div className="product-form-error" role="alert">
+        <div className="alert alert--error" role="alert">
           {errores.length === 1 ? (
             errores[0]
           ) : (

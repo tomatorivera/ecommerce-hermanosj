@@ -66,7 +66,10 @@ const DeleteProductPage = () => {
         )}
 
         {!cargando && producto && (
-          <section className="delete-card" aria-labelledby="eliminar-producto-title">
+          <section
+            className="card card--angosta delete-card"
+            aria-labelledby="eliminar-producto-title"
+          >
             <h2 id="eliminar-producto-title">Eliminar producto</h2>
 
             <p>
@@ -76,19 +79,19 @@ const DeleteProductPage = () => {
             <div className="delete-actions">
               <button
                 type="button"
-                className="delete-confirm"
+                className="btn btn-peligro"
                 onClick={handleConfirmar}
                 disabled={eliminando}
               >
                 {eliminando ? "Eliminando..." : "Confirmar"}
               </button>
-              <Link className="delete-cancel" to={`/productos/${id}`}>
+              <Link className="btn btn-outline" to={`/productos/${id}`}>
                 Cancelar
               </Link>
             </div>
 
             {errorEliminar && (
-              <p className="delete-error" role="alert">
+              <p className="alert alert--error" role="alert">
                 {errorEliminar}
               </p>
             )}

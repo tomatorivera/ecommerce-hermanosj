@@ -43,10 +43,10 @@ export default function ContactForm() {
   };
 
   return (
-    <section className="contact-form-card" aria-labelledby="form-title">
+    <section className="card contact-form-card" aria-labelledby="form-title">
       <h2 id="form-title">Escribinos</h2>
 
-      <form onSubmit={handleSubmit}>
+      <form className="form" onSubmit={handleSubmit}>
         <label htmlFor="nombre">Nombre:</label>
         <input
           type="text"
@@ -79,7 +79,7 @@ export default function ContactForm() {
           required
         />
 
-        <button type="submit" disabled={loading || !isFormComplete}>
+        <button type="submit" className="btn btn-primary" disabled={loading || !isFormComplete}>
           <svg
             viewBox="0 0 24 24"
             fill="none"
@@ -95,7 +95,7 @@ export default function ContactForm() {
         </button>
 
         {status && (
-          <p className={`contact-status contact-status--${status.type}`} role="status">
+          <p className={`alert alert--${status.type}`} role="status">
             {status.text}
           </p>
         )}
