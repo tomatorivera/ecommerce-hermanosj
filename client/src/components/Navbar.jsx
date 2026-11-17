@@ -2,21 +2,19 @@ import { Link } from "react-router-dom";
 import logo from "../assets/logo.svg";
 import "../css/Navbar.css";
 
-const Navbar = ({ cantidadCarrito, onNavegar }) => {
-  const navegar = (e, pagina) => {
-    e.preventDefault();
-    onNavegar(pagina);
-  };
-
+const Navbar = ({ cantidadCarrito }) => {
   return (
     <header className="navbar">
       <nav className="navbar-contenido" aria-label="Navegación principal">
-        <a className="navbar-marca" href="#" onClick={(e) => navegar(e, "inicio")}>
-          <img className="navbar-logo" src={logo} alt="" />
+        <Link className="navbar-marca" to="/">
+          <img className="navbar-logo" src={logo} alt="Logo de los hermanos jota" />
           <span>Hermanos Jota</span>
-        </a>
+        </Link>
 
         <ul className="navbar-links">
+          <li>
+            <Link to="/">Inicio</Link>
+          </li>
           <li>
             <Link to="/productos">Productos</Link>
           </li>

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Route, Routes, useNavigate } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
@@ -9,17 +9,14 @@ import ProductsPage from "./pages/ProductsPage.jsx";
 
 import "./css/global.css";
 import "./css/App.css";
+import HomePage from "./pages/HomePage.jsx";
 
 function App() {
-  const navigate = useNavigate();
-
   // Carrito de compras: lista de productos agregados, cada uno con su cantidad
   const [carrito, setCarrito] = useState([]);
 
   // Total de unidades, no de líneas del carrito
   const cantidadTotal = carrito.reduce((total, item) => total + item.cantidad, 0);
-
-  const navegar = () => navigate("/productos");
 
   const agregarAlCarrito = (producto) => {
     setCarrito((carritoActual) => {
@@ -36,9 +33,10 @@ function App() {
 
   return (
     <section className="app">
-      <Navbar cantidadCarrito={cantidadTotal} onNavegar={navegar} />
+      <Navbar cantidadCarrito={cantidadTotal} />
 
       <Routes>
+        <Route path="/" element={<HomePage />} />
         <Route path="/productos" element={<ProductsPage onAgregarCarrito={agregarAlCarrito} />} />
         <Route
           path="/productos/:id"
