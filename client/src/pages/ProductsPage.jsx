@@ -4,7 +4,7 @@ import { mensajeDeError } from "../utils/errores.utils.js";
 
 import ProductList from "../components/ProductList.jsx";
 
-const ProductsPage = ({ onSeleccionarProducto, onAgregarCarrito }) => {
+const ProductsPage = ({ onAgregarCarrito }) => {
   const [productos, setProductos] = useState([]);
   const [cargando, setCargando] = useState(true);
   const [error, setError] = useState(null);
@@ -33,11 +33,7 @@ const ProductsPage = ({ onSeleccionarProducto, onAgregarCarrito }) => {
           {!cargando && error && <p>Ocurrió un error cargando los productos, detalle: {error}</p>}
 
           {!cargando && !error && (
-            <ProductList
-              productos={productos}
-              onSeleccionarProducto={onSeleccionarProducto}
-              onAgregarCarrito={onAgregarCarrito}
-            />
+            <ProductList productos={productos} onAgregarCarrito={onAgregarCarrito} />
           )}
         </section>
       </main>
