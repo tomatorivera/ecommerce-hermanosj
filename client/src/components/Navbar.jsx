@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import logo from "../assets/logo.svg";
 import "../css/Navbar.css";
 
-const Navbar = ({ cantidadCarrito, paginaActual, onNavegar }) => {
+const Navbar = ({ cantidadCarrito, onNavegar }) => {
   const navegar = (e, pagina) => {
     e.preventDefault();
     onNavegar(pagina);
@@ -18,14 +18,10 @@ const Navbar = ({ cantidadCarrito, paginaActual, onNavegar }) => {
 
         <ul className="navbar-links">
           <li>
-            <Link to="/" aria-current={paginaActual === "inicio" ? "page" : undefined}>
-              Productos
-            </Link>
+            <Link to="/productos">Productos</Link>
           </li>
           <li>
-            <Link to="/contacto" aria-current={paginaActual === "contacto" ? "page" : undefined}>
-              Contacto
-            </Link>
+            <Link to="/contacto">Contacto</Link>
           </li>
         </ul>
 

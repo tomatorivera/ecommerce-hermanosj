@@ -2,9 +2,9 @@ import { useEffect, useState } from "react";
 import { BACKEND_BASE_URL } from "../constants.js";
 import { mensajeDeError } from "../utils/errores.utils.js";
 
-import ProductList from "../components/ProductList";
+import ProductList from "../components/ProductList.jsx";
 
-const HomePage = ({ onSeleccionarProducto, onAgregarCarrito }) => {
+const ProductsPage = ({ onSeleccionarProducto, onAgregarCarrito }) => {
   const [productos, setProductos] = useState([]);
   const [cargando, setCargando] = useState(true);
   const [error, setError] = useState(null);
@@ -45,4 +45,4 @@ const HomePage = ({ onSeleccionarProducto, onAgregarCarrito }) => {
   );
 };
 
-export default HomePage;
+export default ProductsPage;

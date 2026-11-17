@@ -7,7 +7,7 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import ContactPage from "./pages/ContactPage.jsx";
 import ProductDetail from "./components/ProductDetail";
-import HomePage from "./pages/HomePage.jsx";
+import ProductsPage from "./pages/ProductsPage.jsx";
 
 import "./css/global.css";
 import "./css/App.css";
@@ -70,13 +70,13 @@ function App() {
 
   return (
     <section className="app">
-      <Navbar cantidadCarrito={cantidadTotal} paginaActual={paginaActual} onNavegar={navegar} />
+      <Navbar cantidadCarrito={cantidadTotal} onNavegar={navegar} />
 
       <Routes>
         <Route
-          path="/"
+          path="/productos"
           element={
-            <HomePage onSeleccionarProducto={verDetalle} onAgregarCarrito={agregarAlCarrito} />
+            <ProductsPage onSeleccionarProducto={verDetalle} onAgregarCarrito={agregarAlCarrito} />
           }
         />
         <Route path="/contacto" element={<ContactPage />} />
