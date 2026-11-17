@@ -1,0 +1,76 @@
+/* ---------- Page de confirmación para eliminar un producto ---------- */
+.delete-card {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 32px;
+  background-color: #ffffff;
+  border: 1px solid var(--borde);
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(58, 42, 30, 0.08);
+}
+
+.delete-card h2 {
+  margin: 0 0 16px;
+  font-family: var(--font-secundaria);
+  font-size: 1.75rem;
+  color: #8a2a1c;
+}
+
+.delete-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.delete-confirm {
+  padding: 12px 28px;
+  border: 0;
+  border-radius: 999px;
+  background-color: #c0503f;
+  color: #ffffff;
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.delete-confirm:hover:not(:disabled) {
+  background-color: #8a2a1c;
+}
+
+.delete-confirm:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.delete-cancel {
+  padding: 11px 24px;
+  border: 1px solid var(--siena-tostado);
+  border-radius: 999px;
+  color: var(--siena-tostado);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.delete-cancel:hover {
+  background-color: var(--alabastro);
+}
+
+.delete-error {
+  margin: 12px 0 0;
+  padding: 10px 12px;
+  border-radius: 4px;
+  background-color: #fbe9e7;
+  border: 1px solid #c0503f;
+  color: #8a2a1c;
+  font-size: 0.9375rem;
+}
+
+@media (max-width: 800px) {
+  .delete-card {
+    padding: 24px 16px;
+  }
+}

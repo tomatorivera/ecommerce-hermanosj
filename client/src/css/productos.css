@@ -134,6 +134,22 @@
   background-color: var(--alabastro);
 }
 
+/* Botón de eliminación en el detalle de producto */
+.btn-eliminar-producto {
+  display: inline-block;
+  margin-left: 10px;
+  padding: 9px 14px;
+  border: 1px solid #c0503f;
+  border-radius: 4px;
+  color: #8a2a1c;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.btn-eliminar-producto:hover {
+  background-color: #fbe9e7;
+}
+
 .ProductDetail {
   display: flex;
   flex-direction: column;

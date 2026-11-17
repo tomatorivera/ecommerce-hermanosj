@@ -37,6 +37,9 @@ function ProductDetail({ producto, onAgregarCarrito }) {
           <Link className="btn-editar-producto" to={`/admin/editar-producto/${producto._id}`}>
             Editar producto
           </Link>
+          <Link className="btn-eliminar-producto" to={`/admin/eliminar-producto/${producto._id}`}>
+            Eliminar producto
+          </Link>
         </section>
       </article>
     </>
