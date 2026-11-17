@@ -1,4 +1,8 @@
-const ProductCard = ({ producto, onSeleccionarProducto, onAgregarCarrito }) => {
+import { useNavigate } from "react-router-dom";
+
+const ProductCard = ({ producto, onAgregarCarrito }) => {
+  const navigate = useNavigate();
+
   const formateadorPrecio = new Intl.NumberFormat("es-AR", {
     style: "currency",
     currency: "ARS",
@@ -7,10 +11,10 @@ const ProductCard = ({ producto, onSeleccionarProducto, onAgregarCarrito }) => {
 
   return (
     <article className="product-card">
-      <section onClick={() => onSeleccionarProducto(producto.id)}>
+      <section onClick={() => navigate(`/productos/${encodeURIComponent(producto._id)}`)}>
         <img
           className="product-image"
-          src={`../${producto.imagen}`}
+          src={`../${producto.imagenUrl}`}
           alt={`Imagen del producto ${producto.nombre}`}
           loading="lazy"
         />

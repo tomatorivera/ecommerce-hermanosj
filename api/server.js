@@ -5,6 +5,7 @@ const cors = require("cors");
 const logger = require("./src/middlewares/logger.middleware");
 const notFound = require("./src/middlewares/not-found.middleware");
 const errorHandler = require("./src/middlewares/error.middleware");
+const conectarDB = require("./db");
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -28,6 +29,6 @@ app.use(notFound);
 app.use(errorHandler);
 
 // App
-app.listen(PORT, () => {
-  console.log(`\n🚀 App corriendo en http://localhost:${PORT}\n`);
+conectarDB().then(() => {
+  app.listen(PORT, () => console.log(`\n🚀 App corriendo en http://localhost:${PORT}\n`));
 });

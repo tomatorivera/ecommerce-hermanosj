@@ -1,0 +1,13 @@
+/* ---------- Page de confirmación para eliminar un producto ---------- */
+.delete-card h2 {
+  margin-bottom: 16px;
+  color: var(--error-texto);
+}
+
+.delete-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  margin-top: 24px;
+}

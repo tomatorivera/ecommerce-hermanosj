@@ -7,8 +7,60 @@ GET http://{{base_url}}/productos
 
 ### 200 - Obtener producto existente
 
-GET http://{{base_url}}/productos/aparador-uspallata
+GET http://{{base_url}}/productos/6af5b2ef8218fdc3d22b12b4
+
+### 400 - Producto con ID mal formado
+
+GET http://{{base_url}}/productos/abc
 
 ### 404 - Producto inexistente
 
-GET http://{{base_url}}/productos/123123
+GET http://{{base_url}}/productos/6af5b2e4fd18fdc3daab12b2
+
+### 201 - Producto creado
+
+POST http://{{base_url}}/productos HTTP/1.1
+Content-Type: application/json
+
+{
+  "nombre": "Prueba",
+  "precio": 1500
+}
+
+### 200 - Producto actualizado
+
+PUT http://{{base_url}}/productos/6af5b2ef8218fdc3d22b12b4 HTTP/1.1
+Content-Type: application/json
+
+{
+  "nombre": "Aparador Uspallata",
+  "precio": 1150
+}
+
+### 400 - Producto inválido en PUT
+
+PUT http://{{base_url}}/productos/6af5b2ef8218fdc3d22b12b4 HTTP/1.1
+Content-Type: application/json
+
+{
+  "precio": -5,
+  "stock": -3
+}
+
+### 404 - Producto no encontrado en PUT
+
+PUT http://{{base_url}}/productos/6af5b2e4fd18fdc3daab12b2 HTTP/1.1
+Content-Type: application/json
+
+{
+  "nombre": "Aparador Uspallata",
+  "precio": 1150
+}
+
+### 204 - Producto eliminado
+
+DELETE http://{{base_url}}/productos/6afaf90372f92237f614ad89 HTTP/1.1
+
+### 404 - Producto no encontrado en DELETE
+
+DELETE http://{{base_url}}/productos/6aaaaaafbdcb30e6ad73c091

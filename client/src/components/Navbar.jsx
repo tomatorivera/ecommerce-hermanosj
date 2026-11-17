@@ -1,38 +1,25 @@
+import { Link } from "react-router-dom";
 import logo from "../assets/logo.svg";
 import "../css/Navbar.css";
 
-const Navbar = ({ cantidadCarrito, paginaActual, onNavegar }) => {
-  const navegar = (e, pagina) => {
-    e.preventDefault();
-    onNavegar(pagina);
-  };
-
+const Navbar = ({ cantidadCarrito }) => {
   return (
     <header className="navbar">
       <nav className="navbar-contenido" aria-label="Navegación principal">
-        <a className="navbar-marca" href="#" onClick={(e) => navegar(e, "inicio")}>
-          <img className="navbar-logo" src={logo} alt="" />
+        <Link className="navbar-marca" to="/">
+          <img className="navbar-logo" src={logo} alt="Logo de los hermanos jota" />
           <span>Hermanos Jota</span>
-        </a>
+        </Link>
 
         <ul className="navbar-links">
           <li>
-            <a
-              href="#"
-              onClick={(e) => navegar(e, "inicio")}
-              aria-current={paginaActual === "inicio" ? "page" : undefined}
-            >
-              Productos
-            </a>
+            <Link to="/">Inicio</Link>
           </li>
           <li>
-            <a
-              href="#"
-              onClick={(e) => navegar(e, "contacto")}
-              aria-current={paginaActual === "contacto" ? "page" : undefined}
-            >
-              Contacto
-            </a>
+            <Link to="/productos">Productos</Link>
+          </li>
+          <li>
+            <Link to="/contacto">Contacto</Link>
           </li>
         </ul>
 

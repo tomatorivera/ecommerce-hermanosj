@@ -1,0 +1,29 @@
+/* Precio y stock lado a lado */
+.product-form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+/* Botón de envío alineado a la izquierda */
+.product-form .btn {
+  align-self: flex-start;
+  margin-top: 16px;
+}
+
+.product-form .alert ul {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.product-form-status a {
+  color: inherit;
+  font-weight: 600;
+}
+
+@media (max-width: 800px) {
+  .product-form-row {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+}

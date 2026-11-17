@@ -1,28 +1,31 @@
+import { Link } from "react-router-dom";
+
 const formateadorPrecio = new Intl.NumberFormat("es-AR", {
   style: "currency",
   currency: "ARS",
   maximumFractionDigits: 0,
 });
 
-function ProductDetail({ producto, onAgregarCarrito, onVolver }) {
+function ProductDetail({ producto, onAgregarCarrito }) {
   return (
     <>
-      <button className="btn-volver" type="button" onClick={onVolver}>
+      <Link className="btn-volver" to="/productos">
         ← Volver al listado
-      </button>
+      </Link>
 
       <article className="ProductDetail">
-        <img src={`../${producto.imagen}`} alt={`Imagen del producto ${producto.nombre}`} />
+        <img src={`../${producto.imagenUrl}`} alt={`Imagen del producto ${producto.nombre}`} />
         <section>
           <h2 className="product-name">{producto.nombre}</h2>
           <p className="product-price">{formateadorPrecio.format(producto.precio)}</p>
           <p>{producto.descripcion}</p>
           <ul>
-            {producto.detalles.map((detalle) => (
+            {/* Removido temporalmente porque la BD no está guardando los detalles */}
+            {/* {producto.detalles.map((detalle) => (
               <li key={detalle.titulo}>
                 <strong>{detalle.titulo}:</strong> {detalle.descripcion}
               </li>
-            ))}
+            ))} */}
           </ul>
           <button
             className="btn-agregar-carrito"
@@ -31,6 +34,12 @@ function ProductDetail({ producto, onAgregarCarrito, onVolver }) {
           >
             Agregar al carrito
           </button>
+          <Link className="btn-editar-producto" to={`/admin/editar-producto/${producto._id}`}>
+            Editar producto
+          </Link>
+          <Link className="btn-eliminar-producto" to={`/admin/eliminar-producto/${producto._id}`}>
+            Eliminar producto
+          </Link>
         </section>
       </article>
     </>
