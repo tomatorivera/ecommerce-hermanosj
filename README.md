@@ -97,15 +97,6 @@ Las rutas inexistentes responden 404 en JSON y cualquier error no controlado pas
 
 El detalle de carpetas y convenciones está en `docs/estructura-carpetas.md`.
 
-## Decisiones tomadas
-
-- **Vite en lugar de create-react-app:** la consigna menciona create-react-app, pero hoy está discontinuado y React ya no lo recomienda. Usamos Vite, que es la alternativa recomendada, arranca más rápido y no cambia nada del código de React que pide la consigna.
-- **`api/` en lugar de `/backend`:** es solo el nombre de la carpeta; contiene el backend completo en Express.
-- **Navegación con React Router:** `App.jsx` define las rutas con `Routes` y cada vista es una page en `client/src/pages/`.
-- **Estado compartido en `App.jsx`:** el carrito vive en `App` y llega a los componentes por props, por ejemplo el contador del `Navbar`.
-- **Estilos compartidos en `global.css`:** los tokens de color y los componentes que se repiten (`.card`, `.form`, `.btn`, `.alert`) viven en `client/src/css/global.css`; cada archivo de `css/` solo tiene lo propio de su componente.
-- **Lógica en las routes, sin controllers:** los endpoints son chicos, así que cada route lee los datos y arma la respuesta. Los productos se guardan en MongoDB con un modelo de Mongoose (`api/src/models/`); `api/data/productos.js` solo aporta los datos iniciales del seed.
-
 ## Cómo trabajamos
 
 - Una rama por issue y Pull Request contra `dev`.
