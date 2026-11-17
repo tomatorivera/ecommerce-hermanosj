@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { BACKEND_BASE_URL } from "../constants.js";
 import { mensajeDeError } from "../utils/errores.utils.js";
 
@@ -26,8 +27,13 @@ const ProductsPage = ({ onAgregarCarrito }) => {
       <main>
         <h1>Mueblería Hermanos Jota</h1>
 
-        <section>
-          <h2>Productos</h2>
+        <div>
+          <section className="productos-encabezado">
+            <h2>Productos</h2>
+            <Link className="btn-crear-producto" to="/admin/crear-producto">
+              + Crear producto
+            </Link>
+          </section>
 
           {cargando && !error && <p>Cargando productos...</p>}
           {!cargando && error && <p>Ocurrió un error cargando los productos, detalle: {error}</p>}
@@ -35,7 +41,7 @@ const ProductsPage = ({ onAgregarCarrito }) => {
           {!cargando && !error && (
             <ProductList productos={productos} onAgregarCarrito={onAgregarCarrito} />
           )}
-        </section>
+        </div>
       </main>
     </div>
   );

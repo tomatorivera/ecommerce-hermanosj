@@ -4,6 +4,7 @@ import { Route, Routes } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import ContactPage from "./pages/ContactPage.jsx";
+import CreateProductPage from "./pages/CreateProductPage.jsx";
 import ProductDetailPage from "./pages/ProductDetailPage.jsx";
 import ProductsPage from "./pages/ProductsPage.jsx";
 
@@ -43,6 +44,7 @@ function App() {
           element={<ProductDetailPage onAgregarCarrito={agregarAlCarrito} />}
         />
         <Route path="/contacto" element={<ContactPage />} />
+        <Route path="/admin/crear-producto" element={<CreateProductPage />} />
       </Routes>
 
       <Footer />
