@@ -6,6 +6,15 @@ Este repositorio corresponde al proyecto fullstack del ecommerce para la Muebler
 
 En este repositorio se encuentra la versión correspondiente a la entrega de los Sprints 5 y 6 del trayecto FullStack del ITBA.
 
+## Deploy
+
+| Parte    | Plataforma | URL                                                                                    |
+| -------- | ---------- | -------------------------------------------------------------------------------------- |
+| Frontend | Vercel     | [front-ecommerce-hermanosj.vercel.app](https://front-ecommerce-hermanosj.vercel.app)   |
+| Backend  | Render     | [back-ecommerce-hermanosj.onrender.com](https://back-ecommerce-hermanosj.onrender.com) |
+
+Los dos se despliegan solos con cada push a `main`. El backend está en el plan gratuito de Render, que lo apaga tras 15 minutos sin tráfico: la primera petición después de eso puede tardar alrededor de un minuto.
+
 ## Integrantes
 
 Este trabajo es del grupo 5: "Los Simuladores", de la comisión 2 del turno mañana, conformado por:
@@ -56,7 +65,7 @@ En `api/requests/` hay requests de ejemplo para probar cada endpoint.
 
 Monorepo con dos paquetes independientes, cada uno con su propio `package.json`:
 
-- `client/`: frontend en React 19 con React Router. Pide los datos a la API con `fetch`; la URL base está en `client/src/constants.js`.
+- `client/`: frontend en React 19 con React Router. Pide los datos a la API con `fetch`; la URL base está en `client/src/constants.js` y en producción se toma de la variable de entorno `VITE_API_URL` (ver `client/.env.example`).
 - `api/`: backend en Express 5 con MongoDB (Mongoose). Es la carpeta que la consigna llama `/backend`.
 - Raíz: herramientas compartidas (ESLint, Prettier, Husky, lint-staged, commitlint) y documentación en `docs/`.
 
