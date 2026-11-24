@@ -19,10 +19,12 @@ app.use(cors());
 const healthRoutes = require("./src/routes/health.routes");
 const contactoRoutes = require("./src/routes/contact.routes");
 const productosRoutes = require("./src/routes/productos.routes");
+const authRoutes = require("./src/routes/auth.routes");
 
 app.use("/api/contacto", contactoRoutes);
 app.use("/api/ping", healthRoutes);
 app.use("/api/productos", productosRoutes);
+app.use("/api/auth", authRoutes);
 
 // Manejo de errores: van después de las rutas
 app.use(notFound);

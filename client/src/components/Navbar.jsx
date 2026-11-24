@@ -22,7 +22,12 @@ const Navbar = ({ cantidadCarrito }) => {
             <Link to="/contacto">Contacto</Link>
           </li>
         </ul>
-
+        <div className="navbar-auth">
+          <Link to="/login">Iniciar sesión</Link>
+          <Link to="/registro" className="navbar-registro">
+            Crear cuenta
+          </Link>
+        </div>
         <div className="navbar-carrito" aria-live="polite">
           <svg
             className="navbar-carrito-icono"

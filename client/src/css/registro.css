@@ -1,0 +1,85 @@
+
+/* ---------- Página de registro ---------- */
+
+.registro-page {
+    min-height: 70vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 48px 24px;
+}
+
+/* ---------- Tarjeta ---------- */
+
+.registro-card {
+    width: 100%;
+    max-width: 480px;
+}
+
+.registro-card h1 {
+    margin-bottom: 8px;
+    color: var(--text-principal);
+}
+
+.registro-card > p {
+    color: var(--text-secundario);
+    margin-bottom: 24px;
+}
+
+/* ---------- Formulario ---------- */
+
+.registro-card .form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.registro-card .form label {
+    font-weight: 600;
+    color: var(--text-principal);
+}
+
+.registro-card .form input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--borde);
+    border-radius: 6px;
+    font: inherit;
+}
+
+.registro-card .form input:focus {
+    outline: 2px solid var(--siena-tostado);
+    outline-offset: 2px;
+}
+
+.registro-card .form .btn {
+    margin-top: 12px;
+    align-self: stretch;
+    justify-content: center;
+}
+
+/* ---------- Enlace a login ---------- */
+
+.registro-login {
+    margin-top: 24px;
+    text-align: center;
+    color: var(--text-secundario);
+}
+
+.registro-login a {
+    color: var(--siena-tostado);
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.registro-login a:hover {
+    text-decoration: underline;
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 600px) {
+    .registro-page {
+        padding: 32px 16px;
+    }
+}
