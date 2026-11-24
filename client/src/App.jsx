@@ -9,6 +9,7 @@ import DeleteProductPage from "./pages/DeleteProductPage.jsx";
 import EditProductPage from "./pages/EditProductPage.jsx";
 import ProductDetailPage from "./pages/ProductDetailPage.jsx";
 import ProductsPage from "./pages/ProductsPage.jsx";
+import RegisterPage from "./pages/RegisterPage.jsx";
 
 import "./css/global.css";
 import "./css/App.css";
@@ -46,6 +47,7 @@ function App() {
           element={<ProductDetailPage onAgregarCarrito={agregarAlCarrito} />}
         />
         <Route path="/contacto" element={<ContactPage />} />
+        <Route path="/registro" element={<RegisterPage />} />
         <Route path="/admin/crear-producto" element={<CreateProductPage />} />
         <Route path="/admin/editar-producto/:id" element={<EditProductPage />} />
         <Route path="/admin/eliminar-producto/:id" element={<DeleteProductPage />} />

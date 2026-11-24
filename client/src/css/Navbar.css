@@ -97,6 +97,46 @@
   white-space: nowrap;
 }
 
+/* ---------- Autenticación ---------- */
+
+.navbar-auth {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.navbar-auth a {
+  color: #3d2b1f;
+  text-decoration: none;
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  transition: all 0.2s ease;
+}
+
+.navbar-auth a:hover,
+.navbar-auth a:focus-visible {
+  color: #a0522d;
+}
+
+/* Botón Crear cuenta */
+
+.navbar-auth .navbar-registro {
+  padding: 10px 16px;
+  border-radius: 6px;
+  background-color: #a0522d;
+  color: #ffffff;
+  border: 1px solid #a0522d;
+}
+
+.navbar-auth .navbar-registro:hover,
+.navbar-auth .navbar-registro:focus-visible {
+  background-color: #7f3e22;
+  border-color: #7f3e22;
+  color: #ffffff;
+}
+
 /* En pantallas chicas la marca se achica y los links bajan a una segunda línea */
 @media (max-width: 600px) {
   .navbar-contenido {

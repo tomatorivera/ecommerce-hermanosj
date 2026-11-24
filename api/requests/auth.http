@@ -1,0 +1,30 @@
+
+### Registrar un usuario correctamente
+POST http://localhost:3000/api/auth/registro
+Content-Type: application/json
+
+{
+    "nombre": "Usuario de prueba",
+    "email": "prueba@ejemplo.com",
+    "password": "123456"
+}
+
+### Intentar registrar un usuario con el mismo email
+POST http://localhost:3000/api/auth/registro
+Content-Type: application/json
+
+{
+    "nombre": "Usuario duplicado",
+    "email": "prueba@ejemplo.com",
+    "password": "123456"
+}
+
+### Intentar registrar sin completar los campos
+POST http://localhost:3000/api/auth/registro
+Content-Type: application/json
+
+{
+    "nombre": "",
+    "email": "",
+    "password": ""
+}
